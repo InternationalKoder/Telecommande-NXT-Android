@@ -2,11 +2,135 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     tools:context="${relativePackage}.${activityClass}" >
+    
+    <RelativeLayout
+        android:id="@+id/layoutNomRobot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp" >
+
+		<TextView
+		    android:id="@+id/texteNomRobot"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_centerVertical="true"
+		    android:text="@string/texteNomRobot" />
+		   
+		<EditText 
+		    android:id="@+id/champNomRobot"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_toRightOf="@id/texteNomRobot"
+		    android:layout_centerVertical="true"
+		    android:inputType="text" />
+	
+	</RelativeLayout>
+	
+    <LinearLayout
+        android:id="@+id/layoutBoutons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutNomRobot"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+	    
+        <Button
+            android:id="@+id/boutonConnecter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/boutonConnecter"
+            android:layout_weight=".5"
+        	android:layout_gravity="center_vertical" />
+             
+        <Button
+            android:id="@+id/boutonDeconnecter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/boutonDeconnecter"
+            android:layout_weight=".5"
+        	android:layout_gravity="center_vertical" />
+	    
+    </LinearLayout>
 
     <TextView
+        android:id="@+id/texteNomRobotConnecte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
+        android:layout_below="@id/layoutBoutons"
+        android:layout_centerHorizontal="true"
+        android:text="@string/texteNomRobotConnecte"
+        android:padding="10dp" />
+    
+    <RadioGroup
+        android:id="@+id/groupeSens"
+        android:layout_below="@id/texteNomRobotConnecte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp" >
+        
+        <RadioButton
+            android:id="@+id/radioAvancer"
+            android:text="@string/radioAvancer"
+       		android:layout_width="wrap_content"
+       		android:layout_height="wrap_content" />
+        
+        <RadioButton
+            android:id="@+id/radioReculer"
+            android:text="@string/radioReculer"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content" />
+        
+    </RadioGroup>
+     
+    <RelativeLayout
+        android:id="@+id/layoutVitesses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/groupeSens"
+        android:layout_below="@id/texteNomRobotConnecte"
+        android:gravity="center_vertical"
+        android:padding="10dp" >
+        
+	    <SeekBar
+	        android:id="@+id/vitesseAvancer"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" />
+        
+	    <SeekBar
+	        android:id="@+id/vitesseReculer"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/vitesseAvancer" />
+	
+	</RelativeLayout>
+	
+    <LinearLayout
+        android:id="@+id/layoutBoutonsSortie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutVitesses"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+	    
+        <Button
+            android:id="@+id/boutonSortieMilieu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/boutonSortieMilieu"
+            android:layout_weight=".5"
+        	android:layout_gravity="center_vertical" />
+        
+        <Button
+            android:id="@+id/boutonSortieDernier"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/boutonSortieDernier"
+            android:layout_weight=".5"
+        	android:layout_gravity="center_vertical" />
+	    
+    </LinearLayout>
+    
 </RelativeLayout>

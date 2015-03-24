@@ -2,6 +2,13 @@
 <resources>
 
     <string name="app_name">Télécommande NXT Android</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="texteNomRobot">Nom du robot :</string>
+    <string name="boutonConnecter">Se connecter au robot</string>
+    <string name="boutonDeconnecter">Déconnexion</string>
+    <string name="texteNomRobotConnecte">Aucun robot connecté</string>
+    <string name="radioAvancer">Avancer</string>
+    <string name="radioReculer">Reculer</string>
+    <string name="boutonSortieMilieu">Sortie du robot du milieu</string>
+    <string name="boutonSortieDernier">Sortie du dernier robot</string>
 
 </resources>
