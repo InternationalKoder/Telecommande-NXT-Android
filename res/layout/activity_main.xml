@@ -98,13 +98,15 @@
 	    <SeekBar
 	        android:id="@+id/vitesseAvancer"
 	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content" />
+	        android:layout_height="wrap_content"
+	        android:max="126" />
         
 	    <SeekBar
 	        android:id="@+id/vitesseReculer"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_below="@id/vitesseAvancer" />
+	        android:layout_below="@id/vitesseAvancer"
+	        android:max="126" />
 	
 	</RelativeLayout>
 	
