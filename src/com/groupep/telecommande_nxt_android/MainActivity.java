@@ -43,6 +43,7 @@ public class MainActivity extends Activity
 		IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
 		registerReceiver(bluetoothReceiver, filter);
 		
+		// on récupère les éléments du XML
 		this.boutonConnecter = (Button) findViewById(R.id.boutonConnecter);
 		this.boutonDeconnecter = (Button) findViewById(R.id.boutonDeconnecter);
 		this.boutonSortieMilieu = (Button) findViewById(R.id.boutonSortieMilieu);
@@ -57,6 +58,7 @@ public class MainActivity extends Activity
 		this.setEnabled(false);
 		
 		
+		// connexion au robot
 		this.boutonConnecter.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -120,6 +122,7 @@ public class MainActivity extends Activity
 		});
 		
 		
+		// déconnexion du robot
 		this.boutonDeconnecter.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -146,6 +149,7 @@ public class MainActivity extends Activity
 		});
 		
 		
+		// mettre le robot en marche avant
 		this.radioAvancer.setOnCheckedChangeListener(new OnCheckedChangeListener()
 		{
 			@Override
@@ -157,6 +161,7 @@ public class MainActivity extends Activity
 		});
 		
 		
+		// envoi de la vitesse demandée au robot (marche avant)
 		this.vitesseAvancer.setOnSeekBarChangeListener(new OnSeekBarChangeListener()
 		{
 			@Override
@@ -186,6 +191,7 @@ public class MainActivity extends Activity
 		});
 		
 		
+		// envoi de la vitesse demandée au robot (marche arrière)
 		this.vitesseReculer.setOnSeekBarChangeListener(new OnSeekBarChangeListener()
 		{
 			@Override
@@ -215,6 +221,7 @@ public class MainActivity extends Activity
 		});
 		
 		
+		// sortie du robot situé au milieu du platoon
 		this.boutonSortieMilieu.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -233,6 +240,7 @@ public class MainActivity extends Activity
 		});
 		
 		
+		// sortie du robot situé à la fin du platoon
 		this.boutonSortieDernier.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -252,6 +260,10 @@ public class MainActivity extends Activity
 	}
 	
 	
+	/**
+	 * blocage/déblocage de certains boutons 
+	 * @param enabled true lorsqu'un robot est déconnecté, false sinon
+	 */
 	public void setEnabled(boolean enabled)
 	{
 		this.boutonConnecter.setEnabled(!enabled);
@@ -265,6 +277,7 @@ public class MainActivity extends Activity
 	}
 	
 	
+	// permet de chercher les périphériques Bluetooth disponibles
 	private final BroadcastReceiver bluetoothReceiver = new BroadcastReceiver()
 	{
 		public void onReceive(Context context, Intent intent)
@@ -272,6 +285,7 @@ public class MainActivity extends Activity
 			String action = intent.getAction();
 			if(BluetoothDevice.ACTION_FOUND.equals(action))
 			{
+				// recherche et affichage des périphériques trouvés
 				BluetoothDevice dev = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
 				Toast.makeText(MainActivity.this, "dev : " + dev.getName(), Toast.LENGTH_SHORT).show();
 			  
@@ -279,6 +293,7 @@ public class MainActivity extends Activity
 				{
 					try
 					{
+						// on enregistre le périphérique trouvé s'il correspond à celui qu'on recherche
 						connexionRobot = dev.createRfcommSocketToServiceRecord(MY_UUID);
 					}
 					catch (IOException e)
@@ -291,6 +306,9 @@ public class MainActivity extends Activity
 	};
 	
 	
+	/**
+	 * Désactivation du Bluetooth à l'arrêt de l'application
+	 */
 	protected void onDestroy()
 	{
 		  super.onDestroy();
